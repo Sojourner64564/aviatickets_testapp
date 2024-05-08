@@ -28,7 +28,7 @@ class AutoTabScaffoldScreen extends StatelessWidget {
             decoration: const BoxDecoration(
               border: Border(top: BorderSide(
               width: 1,
-              color: AppColors.grey6,
+              color: AppColors.grey2,
             ),),
             ),
             child: BottomNavigationBar(
