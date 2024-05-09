@@ -54,9 +54,15 @@ class AppTextStyles{
     fontWeight: FontWeight.w400,
     color: AppColors.white,
   );
-  static const buttonText1 = TextStyle(
+  static const blueButtonText1 = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     color: AppColors.blue,
+  );
+  static const whiteItalicButtonText1 = TextStyle(
+    fontSize: 16,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
   );
 }

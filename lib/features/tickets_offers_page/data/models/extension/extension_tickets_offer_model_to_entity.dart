@@ -5,11 +5,11 @@ import 'package:aviatickets_testapp/features/tickets_offers_page/domain/entity/t
 
 extension TicketsOfferModelToEntityExtension on TicketsOfferModel{
   TicketsOfferEntity toEntity(TicketsOfferModel ticketsOfferModel){
-    return TicketsOfferEntity( //TODO проверить что будет если убрать TicketsOfferModel ticketsOfferModel
-      id: ticketsOfferModel.id,
-      title: ticketsOfferModel.title,
-      timeRange: ticketsOfferModel.timeRange.join(' '),
-      price: ticketsOfferModel.price.toEntity(),
+    return TicketsOfferEntity(
+      id: id,
+      title: title,
+      timeRange: timeRange.join(' '),
+      price: price.toEntity(),
     );
   }
 }

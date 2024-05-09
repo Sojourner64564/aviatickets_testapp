@@ -4,8 +4,11 @@ import 'package:aviatickets_testapp/features/tickets_offers_page/domain/entity/t
 import 'package:flutter/material.dart';
 
 class FlightTileWidget extends StatelessWidget {
-  const FlightTileWidget({super.key, required this.ticketsOfferEntity, required this.companyColor});
-final TicketsOfferEntity ticketsOfferEntity;
+  const FlightTileWidget(
+      {super.key,
+      required this.ticketsOfferEntity,
+      required this.companyColor});
+  final TicketsOfferEntity ticketsOfferEntity;
   final Color companyColor;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,7 @@ final TicketsOfferEntity ticketsOfferEntity;
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 300,
+                      width: 310,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -43,10 +46,10 @@ final TicketsOfferEntity ticketsOfferEntity;
                           Row(
                             children: [
                               Text(
-                                ticketsOfferEntity.price.value,
+                                '${ticketsOfferEntity.price.value} ₽',
                                 style: AppTextStyles.blueTitle4,
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.arrow_forward_ios_outlined,
                                 size: 15,
                                 color: AppColors.blue,
@@ -57,7 +60,7 @@ final TicketsOfferEntity ticketsOfferEntity;
                       ),
                     ),
                     SizedBox(
-                      width: 300,
+                      width: 310,
                       child: Text(
                         ticketsOfferEntity.timeRange,
                         maxLines: 1,

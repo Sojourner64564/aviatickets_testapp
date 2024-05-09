@@ -8,8 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FlightsPickerWidget extends StatelessWidget {
-  FlightsPickerWidget({super.key});
+class FlightsPickerWidget extends StatefulWidget {
+  const FlightsPickerWidget({super.key});
+
+  @override
+  State<FlightsPickerWidget> createState() => _FlightsPickerWidgetState();
+}
+
+class _FlightsPickerWidgetState extends State<FlightsPickerWidget> {
   final fetchTicketsCubit = getIt<FetchTicketsCubit>();
   final List<Color> myColors = const [
     AppColors.red,
@@ -17,6 +23,11 @@ class FlightsPickerWidget extends StatelessWidget {
     AppColors.darkBlue,
   ];
 
+  @override
+  void initState() {
+    fetchTicketsCubit.fetchTicketsOffers();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,16 +53,21 @@ class FlightsPickerWidget extends StatelessWidget {
                 bloc: fetchTicketsCubit,
                 builder: (context, state) {
                   if (state is FetchTicketsStateInitial) {
-                    return const Center(child: Text('Initial'));
+                    return const Center(child: Text('Initial',
+                      style: AppTextStyles.title3,
+                    ));
                   }
                   if (state is FetchTicketsStateLoading) {
-                    return const Center(child: Text('Loading'));
+                    return const Center(child: Text('Loading',
+                      style: AppTextStyles.title3,));
                   }
                   if (state is FetchTicketsStateEmpty) {
-                    return const Center(child: Text('Empty'));
+                    return const Center(child: Text('Empty',
+                      style: AppTextStyles.title3,));
                   }
                   if (state is FetchTicketsStateError) {
-                    return const Center(child: Text('Error'));
+                    return const Center(child: Text('Error',
+                      style: AppTextStyles.title3,));
                   }
                   if (state is FetchTicketsStateLoaded) {
                     return ListView.builder(
@@ -66,7 +82,8 @@ class FlightsPickerWidget extends StatelessWidget {
                       },
                     );
                   }else{
-                    return const Center(child: Text('Unexpected error'));
+                    return const Center(child: Text('Unexpected error',
+                      style: AppTextStyles.title3,));
                   }
                 },
               ),
@@ -79,7 +96,7 @@ class FlightsPickerWidget extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Показать все',
-                    style: AppTextStyles.buttonText1,
+                    style: AppTextStyles.blueButtonText1,
                   ),
                 ),
               ),

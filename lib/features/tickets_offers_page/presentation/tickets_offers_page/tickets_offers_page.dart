@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
+import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/blue_button_all_tickets_widget.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/filters_buttons_widget.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/flights_picker_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/toggle_price_subscribe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -72,8 +74,8 @@ class TicketsOffersPage extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   child: SizedBox(
                                     width: 15,
                                     height: 15,
@@ -136,14 +138,24 @@ class TicketsOffersPage extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           const SizedBox(
-              width: double.infinity,
-              height: 35,
-              child: FiltersButtonsWidget(),
+            width: double.infinity,
+            height: 35,
+            child: FiltersButtonsWidget(),
           ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: FlightsPickerWidget(),
+          ),
+          const SizedBox(height: 20),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: BlueButtonAllTicketsWidget(),
+          ),
+          const SizedBox(height: 20),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: TogglePriceSubscribeWidget(),
           ),
         ],
       ),
