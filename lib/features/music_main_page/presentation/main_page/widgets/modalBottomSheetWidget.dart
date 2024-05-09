@@ -7,12 +7,26 @@ import 'package:aviatickets_testapp/features/music_main_page/presentation/main_p
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ModalBottomSheetWidget extends StatelessWidget {
-  ModalBottomSheetWidget({super.key, required this.textSecondEditingController, required this.textFirstEditingController});
+class ModalBottomSheetWidget extends StatefulWidget {
+  const ModalBottomSheetWidget({super.key, required this.textSecondEditingController, required this.textFirstEditingController});
   final TextEditingController textFirstEditingController;
   final TextEditingController textSecondEditingController;
+
+  @override
+  State<ModalBottomSheetWidget> createState() => _ModalBottomSheetWidgetState();
+}
+
+class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
   final getLastSearchWordController = getIt<GetLastSearchWordController>();
+
   final saveLastSearchWordController = getIt<SaveLastSearchWordController>();
+  final FocusNode focusNodeSecondField = FocusNode();
+
+  @override
+  void didChangeDependencies() {
+    FocusScope.of(context).requestFocus(focusNodeSecondField);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +66,7 @@ class ModalBottomSheetWidget extends StatelessWidget {
                             width: 280,
                             height: 35,
                             child: TextField(
-                              controller: textFirstEditingController,
+                              controller: widget.textFirstEditingController,
                               onEditingComplete: (){
                                 saveLastSearchWordController.saveLastWord();
                               },
@@ -95,7 +109,8 @@ class ModalBottomSheetWidget extends StatelessWidget {
                             width: 260,
                             height: 35,
                             child: TextField(
-                              controller: textSecondEditingController,
+                              focusNode: focusNodeSecondField,
+                              controller: widget.textSecondEditingController,
                               onEditingComplete: (){
                                 saveLastSearchWordController.saveLastWord();
                               },

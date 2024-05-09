@@ -39,6 +39,18 @@ class AppTextStyles{
     fontWeight: FontWeight.w400,
     color: AppColors.white,
   );
+  static const italicText2 = TextStyle(
+    fontSize: 14,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
+  static const lightGreyItalicText2 = TextStyle(
+    fontSize: 14,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grey5,
+  );
   static const lightGreyText2 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
