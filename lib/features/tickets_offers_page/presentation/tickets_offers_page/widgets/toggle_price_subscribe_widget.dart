@@ -3,8 +3,15 @@ import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TogglePriceSubscribeWidget extends StatelessWidget{
-  const TogglePriceSubscribeWidget({super.key});
+class TogglePriceSubscribeWidget extends StatefulWidget{
+  TogglePriceSubscribeWidget({super.key});
+
+  @override
+  State<TogglePriceSubscribeWidget> createState() => _TogglePriceSubscribeWidgetState();
+}
+
+class _TogglePriceSubscribeWidgetState extends State<TogglePriceSubscribeWidget> {
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,21 +22,31 @@ class TogglePriceSubscribeWidget extends StatelessWidget{
         borderRadius: BorderRadius.circular(8),
         color: AppColors.grey3,
       ),
-      child: Row(children: [
-        SizedBox(
-          width: 20,
-          height: 20,
-          child: SvgPicture.asset(
-            'assets/icons/bell.svg',
-            color: AppColors.blue,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(children: [
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: SvgPicture.asset(
+              'assets/icons/bell.svg',
+              color: AppColors.blue,
+            ),
           ),
-        ),
-        const SizedBox(width: 10),
-        Text('Подписка на цену',
-        style: AppTextStyles.text1,
-        )
-      ],)
+          const SizedBox(width: 10),
+          const Text('Подписка на цену',
+          style: AppTextStyles.text1,
+          ),
+          const Spacer(),
+          Switch(
+            activeColor: AppColors.blue,
+              value: isSwitched, onChanged: (value){
+              setState(() {
+                isSwitched = value;
+              });
+          }),
+        ],),
+      )
     );
   }
-
 }

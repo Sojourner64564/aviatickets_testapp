@@ -153,8 +153,8 @@ class TicketsOffersPage extends StatelessWidget {
             child: BlueButtonAllTicketsWidget(),
           ),
           const SizedBox(height: 20),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TogglePriceSubscribeWidget(),
           ),
         ],

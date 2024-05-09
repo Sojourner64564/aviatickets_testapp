@@ -7,7 +7,7 @@ void main() {
 
   runApp(const MyApp());
 }
-
+//TODO сделать сплеш колор на кнопки
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
