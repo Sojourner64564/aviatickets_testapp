@@ -17,7 +17,7 @@ class TogglePriceSubscribeWidget extends StatelessWidget{
       ),
       child: Row(children: [
         SizedBox(
-          width: 20,
+          width: 20,//
           height: 20,
           child: SvgPicture.asset(
             'assets/icons/bell.svg',
