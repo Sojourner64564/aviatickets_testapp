@@ -1,6 +1,8 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
 import 'package:aviatickets_testapp/core/injectable/injectable.dart';
+import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/get_last_search_word_controller.dart';
+import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/save_last_search_word_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/list_view_music_tile.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/modalBottomSheetWidget.dart';
@@ -17,6 +19,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final fetchMusicMainPageCubit = getIt<FetchMusicMainPageCubit>();
+  final TextEditingController textFirstEditingController = TextEditingController();
+  final TextEditingController textSecondEditingController = TextEditingController();
+  final getLastSearchWordController = getIt<GetLastSearchWordController>();
+  final saveLastSearchWordController = getIt<SaveLastSearchWordController>();
+
   final List<String> pictureLinksList = [
     'assets/images/dora_dura.png',
     'assets/images/lampabikt.png',
@@ -25,6 +32,11 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     fetchMusicMainPageCubit.fetchMusic();
+    getLastSearchWordController.textFirstEditingController = textFirstEditingController;
+    getLastSearchWordController.textSecondEditingController = textSecondEditingController;
+    saveLastSearchWordController.textFirstEditingController = textFirstEditingController;
+    saveLastSearchWordController.textSecondEditingController = textSecondEditingController;
+
     super.initState();
   }
 
@@ -79,16 +91,20 @@ class _MainPageState extends State<MainPage> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                           Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
                             child: SizedBox(
                               width: 280,
                               height: 25,
                               child: TextField(
-                                style: TextStyle(
+                                controller: textFirstEditingController,
+                                onEditingComplete: (){
+                                  saveLastSearchWordController.saveLastWord();
+                                },
+                                style: const TextStyle(
                                   color: AppColors.white,
                                 ),
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   isDense: true,
                                   hintText: 'Минск',
@@ -118,12 +134,13 @@ class _MainPageState extends State<MainPage> {
                                       return const ModalBottomSheetWidget();
                                     });
                               },
-                              child: const SizedBox(
+                              child: SizedBox(
                                 width: 280,
                                 height: 25,
                                 child: TextField(
+                                  controller: textSecondEditingController,
                                   enabled: false,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     isDense: true,
                                     hintText: 'Куда - Турция',
