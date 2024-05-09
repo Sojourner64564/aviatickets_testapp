@@ -1,8 +1,8 @@
 class PriceTicketEntity {
-  final int value;
+  final String value;
 
   const PriceTicketEntity({
-    this.value = 0,
+    this.value = '',
   });
 
 }

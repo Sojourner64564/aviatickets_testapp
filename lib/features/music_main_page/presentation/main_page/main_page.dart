@@ -109,12 +109,12 @@ class _MainPageState extends State<MainPage> {
                             child: GestureDetector(
                               onTap: () {
                                 showModalBottomSheet(
-                                  backgroundColor: AppColors.grey7,
-                                  barrierColor: AppColors.grey7,
-                                    isScrollControlled:true,
+                                    backgroundColor: AppColors.grey7,
+                                    barrierColor: AppColors.grey7,
+                                    isScrollControlled: true,
                                     showDragHandle: true,
                                     context: context,
-                                    builder: (BuildContext context){
+                                    builder: (BuildContext context) {
                                       return const ModalBottomSheetWidget();
                                     });
                               },
@@ -159,14 +159,34 @@ class _MainPageState extends State<MainPage> {
                 BlocBuilder<FetchMusicMainPageCubit, FetchMusicMainPageState>(
               bloc: fetchMusicMainPageCubit,
               builder: (context, state) {
-                if (state is FetchMusicMainPageInitialState)
-                  return const Center(child: Text('Initial'));
-                if (state is FetchMusicMainPageLoadingState)
-                  return const Center(child: Text('Loading'));
-                if (state is FetchMusicMainPageErrorState)
-                  return const Center(child: Text('Error'));
-                if (state is FetchMusicMainPageEmptyState)
-                  return const Center(child: Text('Empty'));
+                if (state is FetchMusicMainPageInitialState) {
+                  return const Center(
+                      child: Text(
+                    'Initial',
+                    style: AppTextStyles.title3,
+                  ));
+                }
+                if (state is FetchMusicMainPageLoadingState) {
+                  return const Center(
+                      child: Text(
+                    'Loading',
+                    style: AppTextStyles.title3,
+                  ));
+                }
+                if (state is FetchMusicMainPageErrorState) {
+                  return const Center(
+                      child: Text(
+                    'Error',
+                    style: AppTextStyles.title3,
+                  ));
+                }
+                if (state is FetchMusicMainPageEmptyState) {
+                  return const Center(
+                      child: Text(
+                    'Empty',
+                    style: AppTextStyles.title3,
+                  ));
+                }
                 if (state is FetchMusicMainPageLoadedState) {
                   return ListView.separated(
                     scrollDirection: Axis.horizontal,
@@ -185,7 +205,11 @@ class _MainPageState extends State<MainPage> {
                     },
                   );
                 } else {
-                  return const Center(child: Text('Unexpected error'));
+                  return const Center(
+                      child: Text(
+                    'Unexpected error',
+                    style: AppTextStyles.title3,
+                  ));
                 }
               },
             ),

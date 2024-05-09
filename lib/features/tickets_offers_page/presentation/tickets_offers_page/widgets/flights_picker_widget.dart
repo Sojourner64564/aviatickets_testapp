@@ -1,12 +1,16 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/core/injectable/injectable.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/cubit/fetch_tickets_cubit.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/flight_tile_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FlightsPickerWidget extends StatelessWidget {
-  const FlightsPickerWidget({super.key,});
+  FlightsPickerWidget({super.key});
+  final fetchTicketsCubit = getIt<FetchTicketsCubit>();
   final List<Color> myColors = const [
     AppColors.red,
     AppColors.blue,
@@ -34,12 +38,36 @@ class FlightsPickerWidget extends StatelessWidget {
             ),
             SizedBox(
               width: double.infinity,
-              child: ListView.builder(
-                itemCount: 3,
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                itemBuilder: (BuildContext context, int index) {
-                  return const FlightTileWidget();
+              child: BlocBuilder<FetchTicketsCubit, FetchTicketsState>(
+                bloc: fetchTicketsCubit,
+                builder: (context, state) {
+                  if (state is FetchTicketsStateInitial) {
+                    return const Center(child: Text('Initial'));
+                  }
+                  if (state is FetchTicketsStateLoading) {
+                    return const Center(child: Text('Loading'));
+                  }
+                  if (state is FetchTicketsStateEmpty) {
+                    return const Center(child: Text('Empty'));
+                  }
+                  if (state is FetchTicketsStateError) {
+                    return const Center(child: Text('Error'));
+                  }
+                  if (state is FetchTicketsStateLoaded) {
+                    return ListView.builder(
+                      itemCount: 3,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (BuildContext context, int index) {
+                        return FlightTileWidget(
+                          ticketsOfferEntity: state.ticketsEntity.ticketsOffers[index],
+                          companyColor: myColors[index],
+                        );
+                      },
+                    );
+                  }else{
+                    return const Center(child: Text('Unexpected error'));
+                  }
                 },
               ),
             ),

@@ -1,10 +1,12 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/domain/entity/tickets_offer_entity.dart';
 import 'package:flutter/material.dart';
 
 class FlightTileWidget extends StatelessWidget {
-  const FlightTileWidget({super.key});
-
+  const FlightTileWidget({super.key, required this.ticketsOfferEntity, required this.companyColor});
+final TicketsOfferEntity ticketsOfferEntity;
+  final Color companyColor;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,11 +22,11 @@ class FlightTileWidget extends StatelessWidget {
                 width: 24,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: AppColors.red,
+                  color: companyColor,
                 ),
               ),
               const SizedBox(width: 10),
-              const SizedBox(
+              SizedBox(
                 height: 50,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,13 +37,13 @@ class FlightTileWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Уральские авиалинии',
+                            ticketsOfferEntity.title,
                             style: AppTextStyles.title4,
                           ),
                           Row(
                             children: [
                               Text(
-                                '2 390₽',
+                                ticketsOfferEntity.price.value,
                                 style: AppTextStyles.blueTitle4,
                               ),
                               Icon(
@@ -57,7 +59,7 @@ class FlightTileWidget extends StatelessWidget {
                     SizedBox(
                       width: 300,
                       child: Text(
-                        '4545 45345 435435 45435 45vcbcbbcvbcvbcvbcvb43',
+                        ticketsOfferEntity.timeRange,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.text2,

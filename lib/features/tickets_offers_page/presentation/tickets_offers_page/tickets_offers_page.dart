@@ -141,8 +141,8 @@ class TicketsOffersPage extends StatelessWidget {
               child: FiltersButtonsWidget(),
           ),
           const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: FlightsPickerWidget(),
           ),
         ],

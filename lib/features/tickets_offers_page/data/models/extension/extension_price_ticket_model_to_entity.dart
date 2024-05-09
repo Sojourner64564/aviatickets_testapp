@@ -5,7 +5,7 @@ import 'package:aviatickets_testapp/features/tickets_offers_page/domain/entity/p
 extension PriceTicketModelToEntityExtension on PriceTicketModel{
   PriceTicketEntity toEntity(){
     return PriceTicketEntity(
-      value: value,
+      value: value.toString(),
     );
   }
 }
