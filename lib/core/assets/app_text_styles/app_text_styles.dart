@@ -32,4 +32,14 @@ class AppTextStyles{
     fontWeight: FontWeight.w400,
     color: AppColors.white,
   );
+  static const lightGreyText2 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grey5,
+  );
+  static const text3 = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
 }

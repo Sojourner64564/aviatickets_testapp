@@ -3,6 +3,7 @@ import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.
 import 'package:aviatickets_testapp/core/injectable/injectable.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/list_view_music_tile.dart';
+import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/modalBottomSheetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,7 +108,15 @@ class _MainPageState extends State<MainPage> {
                             padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                             child: GestureDetector(
                               onTap: () {
-
+                                showModalBottomSheet(
+                                  backgroundColor: AppColors.grey7,
+                                  barrierColor: AppColors.grey7,
+                                    isScrollControlled:true,
+                                    showDragHandle: true,
+                                    context: context,
+                                    builder: (BuildContext context){
+                                      return const ModalBottomSheetWidget();
+                                    });
                               },
                               child: const SizedBox(
                                 width: 280,

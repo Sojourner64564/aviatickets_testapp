@@ -84,9 +84,17 @@ flutter:
     - assets/icons/tuta.svg
     - assets/icons/search_lupa.svg
     - assets/icons/tuta.svg
+    - assets/icons/boing_side.svg
+    - assets/icons/kalendar.svg
+    - assets/icons/fire.svg
+    - assets/icons/roads.svg
+    - assets/icons/globe.svg
     - assets/images/dora_dura.png
     - assets/images/lampabikt.png
     - assets/images/picture.png
+    - assets/images/city.png
+    - assets/images/lodka.png
+    - assets/images/bridge.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

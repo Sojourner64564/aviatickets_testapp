@@ -15,7 +15,9 @@ class AppRouter extends $AppRouter {
         initial: true,
     children: [
       AutoRoute(
-          page: MainRoute.page),
+          page: MainRoute.page,
+         // children:
+      ),
       AutoRoute(
           page: HotelRoute.page),
       AutoRoute(
