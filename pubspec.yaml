@@ -85,6 +85,9 @@ flutter:
     - assets/icons/search_lupa.svg
     - assets/icons/tuta.svg
     - assets/images/dora_dura.png
+    - assets/images/lampabikt.png
+    - assets/images/picture.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

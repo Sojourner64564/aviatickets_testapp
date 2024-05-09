@@ -1,13 +1,31 @@
-import 'dart:ffi';
-
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/core/injectable/injectable.dart';
+import 'package:aviatickets_testapp/features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/list_view_music_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final fetchMusicMainPageCubit = getIt<FetchMusicMainPageCubit>();
+  final List<String> pictureLinksList = [
+    'assets/images/dora_dura.png',
+    'assets/images/lampabikt.png',
+    'assets/images/picture.png',
+  ];
+  @override
+  void initState() {
+    fetchMusicMainPageCubit.fetchMusic();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,18 +103,24 @@ class MainPage extends StatelessWidget {
                             height: 1,
                             color: AppColors.grey5,
                           ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                            child: SizedBox(
-                              width: 280,
-                              height: 25,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  isDense: true,
-                                  hintText: 'Куда - Турция',
-                                  hintStyle: TextStyle(
-                                    color: AppColors.grey6,
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            child: GestureDetector(
+                              onTap: () {
+
+                              },
+                              child: const SizedBox(
+                                width: 280,
+                                height: 25,
+                                child: TextField(
+                                  enabled: false,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    isDense: true,
+                                    hintText: 'Куда - Турция',
+                                    hintStyle: TextStyle(
+                                      color: AppColors.grey6,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -122,18 +146,39 @@ class MainPage extends StatelessWidget {
           SizedBox(
             height: 250,
             width: double.infinity,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: ListViewMusicTile(),
-                );
-            },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(width: 40);
-            },
+            child:
+                BlocBuilder<FetchMusicMainPageCubit, FetchMusicMainPageState>(
+              bloc: fetchMusicMainPageCubit,
+              builder: (context, state) {
+                if (state is FetchMusicMainPageInitialState)
+                  return const Center(child: Text('Initial'));
+                if (state is FetchMusicMainPageLoadingState)
+                  return const Center(child: Text('Loading'));
+                if (state is FetchMusicMainPageErrorState)
+                  return const Center(child: Text('Error'));
+                if (state is FetchMusicMainPageEmptyState)
+                  return const Center(child: Text('Empty'));
+                if (state is FetchMusicMainPageLoadedState) {
+                  return ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.musicEntity.offers.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: ListViewMusicTile(
+                          offerEntity: state.musicEntity.offers[index],
+                          linkPicture: pictureLinksList[index],
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(width: 40);
+                    },
+                  );
+                } else {
+                  return const Center(child: Text('Unexpected error'));
+                }
+              },
             ),
           ),
         ],
