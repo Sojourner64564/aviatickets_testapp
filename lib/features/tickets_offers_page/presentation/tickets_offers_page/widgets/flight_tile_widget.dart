@@ -29,36 +29,42 @@ class FlightTileWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  SizedBox(
-                    width: 300,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                      Text('Уральские авиалинии',
-                      style: AppTextStyles.title4,
-                      ),
-                      Row(
+                    SizedBox(
+                      width: 300,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('2 390K',
-                            style: AppTextStyles.blueTitle4,
+                          Text(
+                            'Уральские авиалинии',
+                            style: AppTextStyles.title4,
                           ),
-                          Icon(Icons.arrow_forward_ios_outlined,
-                          size: 15,
-                            color: AppColors.blue,
+                          Row(
+                            children: [
+                              Text(
+                                '2 390₽',
+                                style: AppTextStyles.blueTitle4,
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                size: 15,
+                                color: AppColors.blue,
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],),
-                  ),
-                  SizedBox(
-                    width: 300,
-                    child: Text('4545 45345 435435 45435 45vcbcbbcvbcvbcvbcvb43',
-                    maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.text2,
                     ),
-                  ),
-                ],),
+                    SizedBox(
+                      width: 300,
+                      child: Text(
+                        '4545 45345 435435 45435 45vcbcbbcvbcvbcvbcvb43',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.text2,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

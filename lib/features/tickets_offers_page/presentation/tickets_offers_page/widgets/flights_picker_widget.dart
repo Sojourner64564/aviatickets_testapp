@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class FlightsPickerWidget extends StatelessWidget {
-  const FlightsPickerWidget({super.key});
-  final List<Color> myColors = [
-    AppColors.red
-  ],
+  const FlightsPickerWidget({super.key,});
+  final List<Color> myColors = const [
+    AppColors.red,
+    AppColors.blue,
+    AppColors.darkBlue,
+  ];
 
   @override
   Widget build(BuildContext context) {
