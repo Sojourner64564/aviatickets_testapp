@@ -17,7 +17,7 @@ class GetLastSearchWordController{
       textFirstEditingController.text = firstString;
     }
     if(secondString != null){
-      textFirstEditingController.text = secondString;
+      textSecondEditingController.text = secondString;
     }
   }
 }

@@ -19,8 +19,10 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final fetchMusicMainPageCubit = getIt<FetchMusicMainPageCubit>();
-  final TextEditingController textFirstEditingController = TextEditingController();
-  final TextEditingController textSecondEditingController = TextEditingController();
+  final TextEditingController textFirstEditingController =
+      TextEditingController();
+  final TextEditingController textSecondEditingController =
+      TextEditingController();
   final getLastSearchWordController = getIt<GetLastSearchWordController>();
   final saveLastSearchWordController = getIt<SaveLastSearchWordController>();
 
@@ -32,11 +34,15 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     fetchMusicMainPageCubit.fetchMusic();
-    getLastSearchWordController.textFirstEditingController = textFirstEditingController;
-    getLastSearchWordController.textSecondEditingController = textSecondEditingController;
-    saveLastSearchWordController.textFirstEditingController = textFirstEditingController;
-    saveLastSearchWordController.textSecondEditingController = textSecondEditingController;
-
+    getLastSearchWordController.textFirstEditingController =
+        textFirstEditingController;
+    getLastSearchWordController.textSecondEditingController =
+        textSecondEditingController;
+    saveLastSearchWordController.textFirstEditingController =
+        textFirstEditingController;
+    saveLastSearchWordController.textSecondEditingController =
+        textSecondEditingController;
+    getLastSearchWordController.getLastWord();
     super.initState();
   }
 
@@ -91,14 +97,14 @@ class _MainPageState extends State<MainPage> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           Padding(
+                          Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
                             child: SizedBox(
                               width: 280,
                               height: 25,
                               child: TextField(
                                 controller: textFirstEditingController,
-                                onEditingComplete: (){
+                                onEditingComplete: () {
                                   saveLastSearchWordController.saveLastWord();
                                 },
                                 style: const TextStyle(
@@ -131,7 +137,11 @@ class _MainPageState extends State<MainPage> {
                                     showDragHandle: true,
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return const ModalBottomSheetWidget();
+                                      return ModalBottomSheetWidget(
+                                        textSecondEditingController:
+                                            textSecondEditingController,
+                                        textFirstEditingController: textFirstEditingController,
+                                      );
                                     });
                               },
                               child: SizedBox(
@@ -140,6 +150,9 @@ class _MainPageState extends State<MainPage> {
                                 child: TextField(
                                   controller: textSecondEditingController,
                                   enabled: false,
+                                  style: const TextStyle(
+                                      color: AppColors.white
+                                  ),
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     isDense: true,
