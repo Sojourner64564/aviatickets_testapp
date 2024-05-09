@@ -1,8 +1,6 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
-import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/colored_buttons_widget.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/popular_flights_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -121,10 +119,7 @@ class ModalBottomSheetWidget extends StatelessWidget {
           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 21),
           child: PopularFlightsWidget(),
-
           )
-
-
         ],
       ),
     );

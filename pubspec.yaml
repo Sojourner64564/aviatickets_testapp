@@ -89,6 +89,7 @@ flutter:
     - assets/icons/fire.svg
     - assets/icons/roads.svg
     - assets/icons/globe.svg
+    - assets/icons/arrow_switch.svg
     - assets/images/dora_dura.png
     - assets/images/lampabikt.png
     - assets/images/picture.png
