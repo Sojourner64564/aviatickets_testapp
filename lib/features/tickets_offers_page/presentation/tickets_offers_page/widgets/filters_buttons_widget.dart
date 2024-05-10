@@ -1,5 +1,6 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/filters_screen/filters_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -77,28 +78,39 @@ class FiltersButtonsWidget extends StatelessWidget{
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-          child: Container(
-            height: 35,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.grey3,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(children: [
-                SizedBox(
-                  width: 12,
-                  height: 12,
-                  child: SvgPicture.asset(
-                    'assets/icons/profile.svg',
-                    color: AppColors.grey5,
+          child: GestureDetector(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                    const FilterScreen()
+                ),
+              );
+            },
+            child: Container(
+              height: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.grey3,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(children: [
+                  SizedBox(
+                    width: 12,
+                    height: 12,
+                    child: SvgPicture.asset(
+                      'assets/icons/profile.svg',
+                      color: AppColors.grey5,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                const Text('1, эконом',
-                  style: AppTextStyles.italicText2,
-                ),
-              ],),
+                  const SizedBox(width: 10),
+                  const Text('1, эконом',
+                    style: AppTextStyles.italicText2,
+                  ),
+                ],),
+              ),
             ),
           ),
         ),

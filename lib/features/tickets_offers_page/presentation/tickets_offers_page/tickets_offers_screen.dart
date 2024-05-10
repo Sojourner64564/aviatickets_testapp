@@ -3,7 +3,7 @@ import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/tickets_offers_page.dart';
 import 'package:flutter/material.dart';
 
-@routePage
+@RoutePage()
 class TicketsOffersScreen extends StatelessWidget{
   const TicketsOffersScreen({super.key});
 

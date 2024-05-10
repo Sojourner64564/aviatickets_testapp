@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
-import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/blue_button_all_tickets_widget.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/filters_buttons_widget.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/flights_picker_widget.dart';
@@ -96,7 +95,6 @@ class TicketsOffersPage extends StatelessWidget {
                           color: AppColors.grey5,
                         ),
                         const SizedBox(
-                          //color: Colors.red,
                           width: 310,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
