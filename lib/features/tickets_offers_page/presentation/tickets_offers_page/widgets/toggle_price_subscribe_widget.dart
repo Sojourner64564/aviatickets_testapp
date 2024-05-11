@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TogglePriceSubscribeWidget extends StatefulWidget{
-  TogglePriceSubscribeWidget({super.key});
+  const TogglePriceSubscribeWidget({super.key});
 
   @override
   State<TogglePriceSubscribeWidget> createState() => _TogglePriceSubscribeWidgetState();

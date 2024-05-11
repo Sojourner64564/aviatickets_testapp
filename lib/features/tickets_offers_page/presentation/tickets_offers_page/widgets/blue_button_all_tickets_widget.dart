@@ -7,17 +7,22 @@ class BlueButtonAllTicketsWidget extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: AppColors.blue,
-      ),
-      child: const Center(
-        child: Text(
-          'Посмотреть все билеты',
-          style: AppTextStyles.whiteItalicButtonText1,
+    return InkWell(
+      onTap: (){
+
+      },
+      child: Ink(
+        height: 40,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.blue,
+        ),
+        child: const Center(
+          child: Text(
+            'Посмотреть все билеты',
+            style: AppTextStyles.whiteItalicButtonText1,
+          ),
         ),
       ),
     );

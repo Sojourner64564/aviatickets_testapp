@@ -6,6 +6,8 @@ import 'package:aviatickets_testapp/features/music_main_page/presentation/contro
 import 'package:aviatickets_testapp/features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/list_view_music_tile.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/modalBottomSheetWidget.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/controller/clear_text_field_controller.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/controller/switch_texts_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,6 +27,8 @@ class _MainPageState extends State<MainPage> {
       TextEditingController();
   final getLastSearchWordController = getIt<GetLastSearchWordController>();
   final saveLastSearchWordController = getIt<SaveLastSearchWordController>();
+  final clearTextFieldController = getIt<ClearTextFieldController>();
+  final switchTextsController = getIt<SwitchTextsController>();
 
   final List<String> pictureLinksList = [
     'assets/images/dora_dura.png',
@@ -41,6 +45,12 @@ class _MainPageState extends State<MainPage> {
     saveLastSearchWordController.textFirstEditingController =
         textFirstEditingController;
     saveLastSearchWordController.textSecondEditingController =
+        textSecondEditingController;
+    clearTextFieldController.textSecondEditingController =
+        textSecondEditingController;
+    switchTextsController.textFirstEditingController =
+        textFirstEditingController;
+    switchTextsController.textSecondEditingController =
         textSecondEditingController;
     getLastSearchWordController.getLastWord();
     super.initState();
@@ -140,7 +150,8 @@ class _MainPageState extends State<MainPage> {
                                       return ModalBottomSheetWidget(
                                         textSecondEditingController:
                                             textSecondEditingController,
-                                        textFirstEditingController: textFirstEditingController,
+                                        textFirstEditingController:
+                                            textFirstEditingController,
                                       );
                                     });
                               },
@@ -150,9 +161,8 @@ class _MainPageState extends State<MainPage> {
                                 child: TextField(
                                   controller: textSecondEditingController,
                                   enabled: false,
-                                  style: const TextStyle(
-                                      color: AppColors.white
-                                  ),
+                                  style:
+                                      const TextStyle(color: AppColors.white),
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     isDense: true,

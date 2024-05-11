@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
+import 'package:aviatickets_testapp/core/injectable/injectable.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/controller/clear_text_field_controller.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/controller/switch_texts_controller.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/blue_button_all_tickets_widget.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/filters_buttons_widget.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/widgets/flights_picker_widget.dart';
@@ -9,7 +12,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 @routePage
 class TicketsOffersPage extends StatelessWidget {
-  const TicketsOffersPage({super.key});
+  TicketsOffersPage({super.key});
+  final clearTextFieldController = getIt<ClearTextFieldController>();
+  final switchTextsController = getIt<SwitchTextsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -47,21 +52,21 @@ class TicketsOffersPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: SizedBox(
-                            //color: Colors.blue,
                             width: 310,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                                   child: SizedBox(
                                     width: 260,
                                     height: 35,
                                     child: TextField(
-                                      style: TextStyle(
+                                      controller: switchTextsController.textFirstEditingController,
+                                      style: const TextStyle(
                                         color: AppColors.white,
                                       ),
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         isDense: true,
                                         hintText: 'Минск',
@@ -75,13 +80,22 @@ class TicketsOffersPage extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10),
-                                  child: SizedBox(
-                                    width: 15,
-                                    height: 15,
-                                    child: SvgPicture.asset(
-                                      'assets/icons/arrow_switch.svg',
-                                      fit: BoxFit.contain,
-                                      color: AppColors.white,
+                                  child: Material(
+                                    color: AppColors.transparentColor,
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(20),
+                                      onTap: (){
+                                        switchTextsController.switchTextsField();
+                                      },
+                                      child: Ink(
+                                        width: 15,
+                                        height: 15,
+                                        child: SvgPicture.asset(
+                                          'assets/icons/arrow_switch.svg',
+                                          fit: BoxFit.contain,
+                                          color: AppColors.white,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -94,18 +108,22 @@ class TicketsOffersPage extends StatelessWidget {
                           height: 1,
                           color: AppColors.grey5,
                         ),
-                        const SizedBox(
+                         SizedBox(
                           width: 310,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                                 child: SizedBox(
                                   width: 260,
                                   height: 35,
                                   child: TextField(
-                                    decoration: InputDecoration(
+                                    controller: clearTextFieldController.textSecondEditingController,
+                                    style: const TextStyle(
+                                        color: AppColors.white
+                                    ),
+                                    decoration: const InputDecoration(
                                       border: InputBorder.none,
                                       isDense: true,
                                       hintText: 'Куда - Турция',
@@ -117,11 +135,24 @@ class TicketsOffersPage extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                child: Icon(
-                                  Icons.close,
-                                  size: 20,
-                                  color: AppColors.white,
+                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                child: Material(
+                                  color: AppColors.transparentColor,
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(20),
+                                    onTap: (){
+                                      clearTextFieldController.clearTextField();
+                                    },
+                                    child: Ink(
+                                      width: 20,
+                                      height: 20,
+                                      child: const Icon(
+                                        Icons.close,
+                                        size: 20,
+                                        color: AppColors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -151,8 +182,8 @@ class TicketsOffersPage extends StatelessWidget {
             child: BlueButtonAllTicketsWidget(),
           ),
           const SizedBox(height: 20),
-           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+           const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: TogglePriceSubscribeWidget(),
           ),
         ],

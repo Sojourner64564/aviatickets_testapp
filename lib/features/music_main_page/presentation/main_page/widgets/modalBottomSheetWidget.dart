@@ -4,6 +4,7 @@ import 'package:aviatickets_testapp/features/music_main_page/presentation/contro
 import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/save_last_search_word_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/colored_buttons_widget.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/main_page/widgets/popular_flights_widget.dart';
+import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/controller/clear_text_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,6 +19,7 @@ class ModalBottomSheetWidget extends StatefulWidget {
 
 class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
   final getLastSearchWordController = getIt<GetLastSearchWordController>();
+  final clearTextFieldController = getIt<ClearTextFieldController>();
 
   final saveLastSearchWordController = getIt<SaveLastSearchWordController>();
   final FocusNode focusNodeSecondField = FocusNode();
@@ -130,9 +132,12 @@ class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
                         ),
                         const Spacer(),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            clearTextFieldController.clearTextField();
+                          },
                           icon: const Icon(
                             Icons.close,
+                            size: 20,
                             color: AppColors.white,
                           ),
                         ),
