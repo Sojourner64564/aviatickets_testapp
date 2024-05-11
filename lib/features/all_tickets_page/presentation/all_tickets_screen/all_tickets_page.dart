@@ -1,5 +1,6 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/features/all_tickets_page/presentation/widget/ticket_tile_widget.dart';
 import 'package:flutter/material.dart';
 
 class AllTicketsPage extends StatelessWidget {
@@ -50,12 +51,13 @@ class AllTicketsPage extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-            itemBuilder: (BuildContext context, int index) {
-              return 
-            },
-          ))
+            child: ListView.builder(
+              itemCount: 4,
+              itemBuilder: (BuildContext context, int index) {
+                return const TicketTileWidget();
+              },
+            ),
+          ),
         ],
       ),
     );
