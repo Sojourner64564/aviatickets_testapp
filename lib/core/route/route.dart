@@ -16,10 +16,15 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: AnywhereToGoRoute.page),
             AutoRoute(page: WeekendRoute.page),
             AutoRoute(page: HotTicketsRoute.page),
-            AutoRoute(page: TicketsOffersRoute.page, children: [
+            AutoRoute(
+              page: TicketsOffersRoute.page,
+              children: [
               AutoRoute(
                 page: FilterRoute.page,
               ),
+                AutoRoute(
+                  page: AllTicketsRoute.page,
+                ),
             ],
             ),
           ],
