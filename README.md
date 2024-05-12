@@ -3,9 +3,6 @@
 Мок сервер не работает - работает только последний fetch данных
 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
 
 
 
