@@ -63,6 +63,7 @@ class TicketsOffersPage extends StatelessWidget {
                                     height: 35,
                                     child: TextField(
                                       controller: switchTextsController.textFirstEditingController,
+                                      autofocus: false,
                                       style: const TextStyle(
                                         color: AppColors.white,
                                       ),
@@ -90,7 +91,7 @@ class TicketsOffersPage extends StatelessWidget {
                                       child: Ink(
                                         width: 25,
                                         height: 25,
-                                        padding: EdgeInsets.all(5),
+                                        padding: const EdgeInsets.all(5),
                                         child: SvgPicture.asset(
                                           'assets/icons/arrow_switch.svg',
                                           fit: BoxFit.contain,
@@ -121,6 +122,7 @@ class TicketsOffersPage extends StatelessWidget {
                                   height: 35,
                                   child: TextField(
                                     controller: clearTextFieldController.textSecondEditingController,
+                                    autofocus: false,
                                     style: const TextStyle(
                                         color: AppColors.white
                                     ),

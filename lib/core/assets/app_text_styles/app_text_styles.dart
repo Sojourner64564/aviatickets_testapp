@@ -23,6 +23,12 @@ class AppTextStyles{
     fontWeight: FontWeight.w400,
     color: AppColors.white,
   );
+  static const greyTitle4 = TextStyle(
+    fontSize: 14,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grey5,
+  );
   static const blueTitle4 = TextStyle(
     fontSize: 14,
     fontStyle: FontStyle.italic,

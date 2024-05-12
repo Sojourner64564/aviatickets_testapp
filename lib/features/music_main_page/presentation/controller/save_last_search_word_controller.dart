@@ -13,6 +13,5 @@ class SaveLastSearchWordController{
   Future<void> saveLastWord() async{
     cacheDataLocalDataSource.writeString('firstString', textFirstEditingController.text);
     cacheDataLocalDataSource.writeString('secondString', textSecondEditingController.text);
-
   }
 }

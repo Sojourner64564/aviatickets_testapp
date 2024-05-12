@@ -13,43 +13,47 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i3;
 
+import '../../features/all_tickets_page/presentation/controller/show_entire_route_controller.dart'
+    as _i10;
+import '../../features/all_tickets_page/presentation/cubit/show_entire_route_cubit.dart'
+    as _i11;
 import '../../features/cache_data/data/data_source/local_data_source/cache_data_client.dart'
     as _i7;
 import '../../features/cache_data/data/data_source/local_data_source/cache_data_local_data_source.dart'
-    as _i12;
+    as _i14;
 import '../../features/cache_data/data/data_source/local_data_source/cache_data_local_data_source_impl.dart'
-    as _i13;
+    as _i15;
 import '../../features/music_main_page/data/data_source/music_remote_data_source/music_remote_data_source.dart'
     as _i5;
 import '../../features/music_main_page/data/repository_impl/fetch_music_repository_impl.dart'
-    as _i17;
+    as _i19;
 import '../../features/music_main_page/domain/repository/fetch_music_repository.dart'
-    as _i16;
+    as _i18;
 import '../../features/music_main_page/domain/usecase/fetch_music_usecase.dart'
-    as _i20;
+    as _i22;
 import '../../features/music_main_page/presentation/controller/get_last_search_word_controller.dart'
-    as _i14;
+    as _i16;
 import '../../features/music_main_page/presentation/controller/save_last_search_word_controller.dart'
-    as _i15;
+    as _i17;
 import '../../features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart'
-    as _i23;
+    as _i25;
 import '../../features/tickets_offers_page/data/remote_data_source/tickets_offers_remote_data_source.dart'
     as _i6;
 import '../../features/tickets_offers_page/data/repository_impl/fetch_tickets_offers_repository_impl.dart'
-    as _i19;
-import '../../features/tickets_offers_page/domain/repository/fetch_tickets_offers_repository.dart'
-    as _i18;
-import '../../features/tickets_offers_page/domain/usecase/fetch_tickets_offers_usecase.dart'
     as _i21;
+import '../../features/tickets_offers_page/domain/repository/fetch_tickets_offers_repository.dart'
+    as _i20;
+import '../../features/tickets_offers_page/domain/usecase/fetch_tickets_offers_usecase.dart'
+    as _i23;
 import '../../features/tickets_offers_page/presentation/controller/clear_text_field_controller.dart'
     as _i8;
 import '../../features/tickets_offers_page/presentation/controller/switch_texts_controller.dart'
     as _i9;
 import '../../features/tickets_offers_page/presentation/cubit/fetch_tickets_cubit.dart'
-    as _i22;
-import '../network/internet_connection_checker.dart' as _i24;
-import '../network/network_info.dart' as _i10;
-import '../network/network_info_impl.dart' as _i11;
+    as _i24;
+import '../network/internet_connection_checker.dart' as _i26;
+import '../network/network_info.dart' as _i12;
+import '../network/network_info_impl.dart' as _i13;
 import '../route/route.dart' as _i4;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -76,34 +80,38 @@ _i1.GetIt $initGetIt(
       () => _i8.ClearTextFieldController());
   gh.lazySingleton<_i9.SwitchTextsController>(
       () => _i9.SwitchTextsController());
-  gh.lazySingleton<_i10.NetworkInfo>(
-      () => _i11.NetworkInfoImpl(gh<_i3.InternetConnectionChecker>()));
-  gh.lazySingleton<_i12.CacheDataLocalDataSource>(
-      () => _i13.CacheDataLocalDataSourceImpl(gh<_i7.CacheDataClient>()));
-  gh.lazySingleton<_i14.GetLastSearchWordController>(() =>
-      _i14.GetLastSearchWordController(gh<_i12.CacheDataLocalDataSource>()));
-  gh.lazySingleton<_i15.SaveLastSearchWordController>(() =>
-      _i15.SaveLastSearchWordController(gh<_i12.CacheDataLocalDataSource>()));
-  gh.lazySingleton<_i16.FetchMusicRepository>(
-      () => _i17.FetchMusicRepositoryImpl(
-            gh<_i10.NetworkInfo>(),
+  gh.lazySingleton<_i10.ShowEntireRouteController>(
+      () => _i10.ShowEntireRouteController());
+  gh.lazySingleton<_i11.ShowEntireRouteCubit>(
+      () => _i11.ShowEntireRouteCubit());
+  gh.lazySingleton<_i12.NetworkInfo>(
+      () => _i13.NetworkInfoImpl(gh<_i3.InternetConnectionChecker>()));
+  gh.lazySingleton<_i14.CacheDataLocalDataSource>(
+      () => _i15.CacheDataLocalDataSourceImpl(gh<_i7.CacheDataClient>()));
+  gh.lazySingleton<_i16.GetLastSearchWordController>(() =>
+      _i16.GetLastSearchWordController(gh<_i14.CacheDataLocalDataSource>()));
+  gh.lazySingleton<_i17.SaveLastSearchWordController>(() =>
+      _i17.SaveLastSearchWordController(gh<_i14.CacheDataLocalDataSource>()));
+  gh.lazySingleton<_i18.FetchMusicRepository>(
+      () => _i19.FetchMusicRepositoryImpl(
+            gh<_i12.NetworkInfo>(),
             gh<_i5.MusicRemoteDataSourceClient>(),
           ));
-  gh.lazySingleton<_i18.FetchTicketsOffersRepository>(
-      () => _i19.FetchTicketsOffersRepositoryImpl(
-            gh<_i10.NetworkInfo>(),
+  gh.lazySingleton<_i20.FetchTicketsOffersRepository>(
+      () => _i21.FetchTicketsOffersRepositoryImpl(
+            gh<_i12.NetworkInfo>(),
             gh<_i6.TicketsOffersRemoteDataSourceClient>(),
           ));
-  gh.factory<_i20.FetchMusicUsecase>(
-      () => _i20.FetchMusicUsecase(gh<_i16.FetchMusicRepository>()));
-  gh.factory<_i21.FetchTicketsOffersUsecase>(() =>
-      _i21.FetchTicketsOffersUsecase(gh<_i18.FetchTicketsOffersRepository>()));
-  gh.lazySingleton<_i22.FetchTicketsCubit>(
-      () => _i22.FetchTicketsCubit(gh<_i21.FetchTicketsOffersUsecase>()));
-  gh.lazySingleton<_i23.FetchMusicMainPageCubit>(
-      () => _i23.FetchMusicMainPageCubit(gh<_i20.FetchMusicUsecase>()));
+  gh.factory<_i22.FetchMusicUsecase>(
+      () => _i22.FetchMusicUsecase(gh<_i18.FetchMusicRepository>()));
+  gh.factory<_i23.FetchTicketsOffersUsecase>(() =>
+      _i23.FetchTicketsOffersUsecase(gh<_i20.FetchTicketsOffersRepository>()));
+  gh.lazySingleton<_i24.FetchTicketsCubit>(
+      () => _i24.FetchTicketsCubit(gh<_i23.FetchTicketsOffersUsecase>()));
+  gh.lazySingleton<_i25.FetchMusicMainPageCubit>(
+      () => _i25.FetchMusicMainPageCubit(gh<_i22.FetchMusicUsecase>()));
   return getIt;
 }
 
 class _$RegisterModuleConnectionChecker
-    extends _i24.RegisterModuleConnectionChecker {}
+    extends _i26.RegisterModuleConnectionChecker {}

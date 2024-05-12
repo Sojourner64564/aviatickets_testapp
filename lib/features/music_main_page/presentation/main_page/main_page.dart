@@ -1,6 +1,8 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
 import 'package:aviatickets_testapp/core/injectable/injectable.dart';
+import 'package:aviatickets_testapp/features/all_tickets_page/presentation/controller/show_entire_route_controller.dart';
+import 'package:aviatickets_testapp/features/all_tickets_page/presentation/cubit/show_entire_route_cubit.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/get_last_search_word_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/save_last_search_word_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart';
@@ -29,6 +31,8 @@ class _MainPageState extends State<MainPage> {
   final saveLastSearchWordController = getIt<SaveLastSearchWordController>();
   final clearTextFieldController = getIt<ClearTextFieldController>();
   final switchTextsController = getIt<SwitchTextsController>();
+  final showEntireRouteController = getIt<ShowEntireRouteController>();
+  final showEntireRouteCubit = getIt<ShowEntireRouteCubit>();
 
   final List<String> pictureLinksList = [
     'assets/images/dora_dura.png',
@@ -52,6 +56,9 @@ class _MainPageState extends State<MainPage> {
         textFirstEditingController;
     switchTextsController.textSecondEditingController =
         textSecondEditingController;
+    showEntireRouteCubit.textFirstEditingController = textFirstEditingController;
+    showEntireRouteCubit.textSecondEditingController = textSecondEditingController;
+
     getLastSearchWordController.getLastWord();
     super.initState();
   }

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class ClearTextFieldController{
-  ClearTextFieldController();
-
+class ShowEntireRouteController{
+  ShowEntireRouteController();
+  TextEditingController textFirstEditingController = TextEditingController();
   TextEditingController textSecondEditingController = TextEditingController();
 
-  void clearTextField(){
-    textSecondEditingController.clear();
+  void showRoute(){
+
   }
 }
