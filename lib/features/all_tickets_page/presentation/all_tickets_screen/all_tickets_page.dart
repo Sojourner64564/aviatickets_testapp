@@ -1,6 +1,7 @@
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
 import 'package:aviatickets_testapp/core/injectable/injectable.dart';
+import 'package:aviatickets_testapp/features/all_tickets_page/presentation/cubit/fetch_all_tickets_cubit.dart';
 import 'package:aviatickets_testapp/features/all_tickets_page/presentation/cubit/show_entire_route_cubit.dart';
 import 'package:aviatickets_testapp/features/all_tickets_page/presentation/widget/ticket_tile_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,10 @@ class _AllTicketsPageState extends State<AllTicketsPage> {
   final FocusNode focusNode = FocusNode();
 
   final showEntireRouteCubit = getIt<ShowEntireRouteCubit>();
+  final fetchAllTicketsCubit = getIt<FetchAllTicketsCubit>();
   @override
   void initState() {
+    fetchAllTicketsCubit.fetchAllTickets();
     showEntireRouteCubit.viewEntire();
     super.initState();
   }
@@ -79,17 +82,16 @@ class _AllTicketsPageState extends State<AllTicketsPage> {
                           if (state is ShowEntireRouteStateError) {
                             return const Center(
                                 child: Text(
-                              'Error',
-                              style: AppTextStyles.title3,
-                            ));
-                          }else{
+                                  'Error',
+                                  style: AppTextStyles.title3,
+                                ));
+                          } else {
                             return const Center(
                                 child: Text(
                                   'Unexpected error',
                                   style: AppTextStyles.title3,
                                 ));
                           }
-
                         },
                       ),
                       const Text(
@@ -102,14 +104,56 @@ class _AllTicketsPageState extends State<AllTicketsPage> {
               ),
             ),
           ),
+          const SizedBox(height: 20),
           Expanded(
-            child: ListView.separated(
-              itemCount: 4,
-              itemBuilder: (BuildContext context, int index) {
-                return const TicketTileWidget();
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 24);
+            child: BlocBuilder<FetchAllTicketsCubit, FetchAllTicketsState>(
+              bloc: fetchAllTicketsCubit,
+              builder: (context, state) {
+                if(state is FetchAllTicketsStateInitial){
+                  return const Center(
+                      child: Text(
+                        'Initial',
+                        style: AppTextStyles.title3,
+                      ));
+                }
+                if(state is FetchAllTicketsStateLoading){
+                  return const Center(
+                      child: Text(
+                        'Loading',
+                        style: AppTextStyles.title3,
+                      ));
+                }
+                if(state is FetchAllTicketsStateLoaded){
+                  return ListView.separated(
+                    itemCount: state.allTicketsEntity.tickets.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return TicketTileWidget(ticketFlightEntity: state.allTicketsEntity.tickets[index],);
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(height: 24);
+                    },
+                  );
+                }
+                if(state is FetchAllTicketsStateEmpty){
+                  return const Center(
+                      child: Text(
+                        'Empty',
+                        style: AppTextStyles.title3,
+                      ));
+                }
+                if(state is FetchAllTicketsStateError){
+                  return const Center(
+                      child: Text(
+                        'Error',
+                        style: AppTextStyles.title3,
+                      ));
+                }else{
+                  return const Center(
+                      child: Text(
+                        'Unexpected error',
+                        style: AppTextStyles.title3,
+                      ));
+                }
               },
             ),
           ),

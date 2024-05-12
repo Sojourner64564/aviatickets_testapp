@@ -9,10 +9,10 @@ class FetchAllTicketsUsecase implements FetchAllTicketsRepository{
   final FetchAllTicketsRepository fetchAllTicketsRepository;
 
   FetchAllTicketsUsecase(this.fetchAllTicketsRepository);
+
   @override
-  Future<Either<Failure, AllTicketsEntity>> fetchAllTickets() {
-    // TODO: implement fetchAllTickets
-    throw UnimplementedError();
+  Future<Either<Failure, AllTicketsEntity>> fetchAllTickets() async{
+    return await fetchAllTicketsRepository.fetchAllTickets();
   }
 
 }

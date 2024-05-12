@@ -1,10 +1,10 @@
 
 class ArrivalEntity {
   final String town;
-  final String date;
+  String date;
   final String airport;
 
-   const ArrivalEntity({
+  ArrivalEntity({
      this.town = '',
      this.date = '',
      this.airport = '',

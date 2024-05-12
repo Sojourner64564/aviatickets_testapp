@@ -9,29 +9,30 @@ class TicketFlightEntity {
   final PriceFlightEntity price;
   final String providerName;
   final String company;
-  final ArrivalEntity departure;
-  final ArrivalEntity arrival;
+  final ArrivalEntity? departure;
+  final ArrivalEntity? arrival;
   final bool hasTransfer;
   final bool hasVisaTransfer;
   final LuggageEntity luggage;
   final HandLuggageEntity handLuggage;
   final bool isReturnable;
   final bool isExchangable;
+  final String timeOfFlight;
 
- const TicketFlightEntity({
-     this.id = 0,
-     this.badge,
-     this.price = const PriceFlightEntity(),
-     this.providerName = '',
-     this.company = '',
-     this.departure = const ArrivalEntity(),
-     this.arrival = const ArrivalEntity(),
-     this.hasTransfer = false,
-     this.hasVisaTransfer = false,
-     this.luggage = const LuggageEntity(),
-     this.handLuggage = const HandLuggageEntity(),
-     this.isReturnable = false,
-     this.isExchangable = false,
+  const TicketFlightEntity({
+    this.id = 0,
+    this.badge,
+    this.price = const PriceFlightEntity(),
+    this.providerName = '',
+    this.company = '',
+    this.departure,
+    this.arrival,
+    this.hasTransfer = false,
+    this.hasVisaTransfer = false,
+    this.luggage = const LuggageEntity(),
+    this.handLuggage = const HandLuggageEntity(),
+    this.isReturnable = false,
+    this.isExchangable = false,
+    this.timeOfFlight = '',
   });
-
 }

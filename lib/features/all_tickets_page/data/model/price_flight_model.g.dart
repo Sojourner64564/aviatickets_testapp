@@ -8,7 +8,7 @@ part of 'price_flight_model.dart';
 
 PriceFlightModel _$PriceFlightModelFromJson(Map<String, dynamic> json) =>
     PriceFlightModel(
-      value: (json['value'] as num).toInt(),
+      value: (json['value'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$PriceFlightModelToJson(PriceFlightModel instance) =>
