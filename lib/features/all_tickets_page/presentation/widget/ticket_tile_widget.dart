@@ -27,7 +27,7 @@ class TicketTileWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'fdfdfd',
+                    '8463₽',
                     style: AppTextStyles.title1,
                   ),
                   const SizedBox(height: 16),

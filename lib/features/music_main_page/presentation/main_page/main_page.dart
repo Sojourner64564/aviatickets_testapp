@@ -3,6 +3,7 @@ import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.
 import 'package:aviatickets_testapp/core/injectable/injectable.dart';
 import 'package:aviatickets_testapp/features/all_tickets_page/presentation/controller/show_entire_route_controller.dart';
 import 'package:aviatickets_testapp/features/all_tickets_page/presentation/cubit/show_entire_route_cubit.dart';
+import 'package:aviatickets_testapp/features/common/presentation/controller/text_field_controller_manager_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/get_last_search_word_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/controller/save_last_search_word_controller.dart';
 import 'package:aviatickets_testapp/features/music_main_page/presentation/cubit/fetch_music_main_page_cubit.dart';
@@ -33,6 +34,7 @@ class _MainPageState extends State<MainPage> {
   final switchTextsController = getIt<SwitchTextsController>();
   final showEntireRouteController = getIt<ShowEntireRouteController>();
   final showEntireRouteCubit = getIt<ShowEntireRouteCubit>();
+  final textFieldControllerManagerController = getIt<TextFieldControllerManagerController>();
 
   final List<String> pictureLinksList = [
     'assets/images/dora_dura.png',
@@ -42,7 +44,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     fetchMusicMainPageCubit.fetchMusic();
-    getLastSearchWordController.textFirstEditingController =
+     getLastSearchWordController.textFirstEditingController =
         textFirstEditingController;
     getLastSearchWordController.textSecondEditingController =
         textSecondEditingController;
@@ -58,6 +60,8 @@ class _MainPageState extends State<MainPage> {
         textSecondEditingController;
     showEntireRouteCubit.textFirstEditingController = textFirstEditingController;
     showEntireRouteCubit.textSecondEditingController = textSecondEditingController;
+    textFieldControllerManagerController.textFirstEditingController = textFirstEditingController;
+    textFieldControllerManagerController.textSecondEditingController = textSecondEditingController;
 
     getLastSearchWordController.getLastWord();
     super.initState();

@@ -121,7 +121,7 @@ class TicketsOffersPage extends StatelessWidget {
                                   width: 260,
                                   height: 35,
                                   child: TextField(
-                                    controller: clearTextFieldController.textSecondEditingController,
+                                    controller: switchTextsController.textSecondEditingController,
                                     autofocus: false,
                                     style: const TextStyle(
                                         color: AppColors.white
