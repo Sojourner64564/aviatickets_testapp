@@ -1,10 +1,13 @@
 # aviatickets_testapp
 
-A new Flutter project.
+Мок сервер не работает - работает только последний fetch данных
+
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
+
+
 
 ![image](https://media.discordapp.net/attachments/534362917685166103/1239291367687979008/cxxvv.PNG?ex=66426386&is=66411206&hm=c9cd727c2b767939fcfd2e3f2f4d153c52b792f297c317ae3e8d27d2576eaa04&=&format=webp&quality=lossless&width=328&height=676)
 ![image](https://media.discordapp.net/attachments/534362917685166103/1239291368006881401/fgfdgdfg.PNG?ex=66426387&is=66411207&hm=e0a153f01fac65b2855e119a675ef600868947b2c5d5ec007c13942a164aaefa&=&format=webp&quality=lossless&width=329&height=676)
