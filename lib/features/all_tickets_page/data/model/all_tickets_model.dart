@@ -1,98 +1,25 @@
-class AllTickets {
-  List<Ticket> tickets;
+import 'package:aviatickets_testapp/features/all_tickets_page/data/model/ticket_flight_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-  AllTickets({
-    required this.tickets,
+
+part 'all_tickets_model.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class AllTicketsModel {
+  final List<TicketFlightModel> tickets;
+
+  const AllTicketsModel({
+    this.tickets = const [],
   });
 
+  factory AllTicketsModel.fromJson(Map<String,dynamic> json) => _$AllTicketsModelFromJson(json);
+
+  Map<String,dynamic> toJson() => _$AllTicketsModelToJson(this);
 }
 
-class Ticket {
-  int id;
-  String? badge;
-  Price price;
-  String providerName;
-  String company;
-  Arrival departure;
-  Arrival arrival;
-  bool hasTransfer;
-  bool hasVisaTransfer;
-  Luggage luggage;
-  HandLuggage handLuggage;
-  bool isReturnable;
-  bool isExchangable;
 
-  Ticket({
-    required this.id,
-    this.badge,
-    required this.price,
-    required this.providerName,
-    required this.company,
-    required this.departure,
-    required this.arrival,
-    required this.hasTransfer,
-    required this.hasVisaTransfer,
-    required this.luggage,
-    required this.handLuggage,
-    required this.isReturnable,
-    required this.isExchangable,
-  });
 
-}
 
-class Arrival {
-  Town town;
-  DateTime date;
-  Airport airport;
-
-  Arrival({
-    required this.town,
-    required this.date,
-    required this.airport,
-  });
-
-}
-
-enum Airport {
-  AER,
-  VKO
-}
-
-enum Town {
-  EMPTY,
-  TOWN
-}
-
-class HandLuggage {
-  bool hasHandLuggage;
-  String? size;
-
-  HandLuggage({
-    required this.hasHandLuggage,
-    this.size,
-  });
-
-}
-
-class Luggage {
-  bool hasLuggage;
-  Price? price;
-
-  Luggage({
-    required this.hasLuggage,
-    this.price,
-  });
-
-}
-
-class Price {
-  int value;
-
-  Price({
-    required this.value,
-  });
-
-}
 /*
 
 {
