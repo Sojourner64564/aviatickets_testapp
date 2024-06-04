@@ -10,10 +10,10 @@ class AllTicketsScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.mainGrey,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: const FloatingActionButtonFiltersWidget(),
+      floatingActionButton: FloatingActionButtonFiltersWidget(),
       body: AllTicketsPage(),
     );
   }

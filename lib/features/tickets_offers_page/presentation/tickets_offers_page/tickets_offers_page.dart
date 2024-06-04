@@ -10,7 +10,6 @@ import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/ti
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-@routePage
 class TicketsOffersPage extends StatelessWidget {
   TicketsOffersPage({super.key});
   final clearTextFieldController = getIt<ClearTextFieldController>();

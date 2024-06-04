@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/core/route/route.gr.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/tickets_offers_page/tickets_offers_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,14 +23,27 @@ class PopularFlightsWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-              onTap: (){
-                Navigator.push(
+              onTap: () async{
+                final router  = AutoRouter.of(context);
+                print('jijkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+
+                final fd = await router.push(const SubscribeRoute(), onFailure: (navigationFailure){
+                  print(navigationFailure);
+                  print("-----------------------------------------------------");
+
+                });
+                print('jijkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+               print(fd);
+                //router.replace(const TicketsOffersRoute());
+                //  print(router.current.name);
+               // AutoRouter.of(context).push(const TicketsOffersRoute());
+               /* Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
                       const TicketsOffersScreen()
                   ),
-                );
+                );*/
               },
               child: Row(
                 children: [
