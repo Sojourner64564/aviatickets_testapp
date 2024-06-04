@@ -24,26 +24,9 @@ class PopularFlightsWidget extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () async{
-                final router  = AutoRouter.of(context);
-                print('jijkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
 
-                final fd = await router.push(const SubscribeRoute(), onFailure: (navigationFailure){
-                  print(navigationFailure);
-                  print("-----------------------------------------------------");
+                AutoRouter.of(context).push(const TicketsOffersRoute());
 
-                });
-                print('jijkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-               print(fd);
-                //router.replace(const TicketsOffersRoute());
-                //  print(router.current.name);
-               // AutoRouter.of(context).push(const TicketsOffersRoute());
-               /* Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                      const TicketsOffersScreen()
-                  ),
-                );*/
               },
               child: Row(
                 children: [
@@ -82,13 +65,15 @@ class PopularFlightsWidget extends StatelessWidget {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.push(
+                AutoRouter.of(context).push(const TicketsOffersRoute());
+
+               /* Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
                       const TicketsOffersScreen()
                   ),
-                );
+                );*/
               },
               child: Row(
                 children: [
@@ -127,13 +112,14 @@ class PopularFlightsWidget extends StatelessWidget {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.push(
+                AutoRouter.of(context).push(const TicketsOffersRoute());
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
                       const TicketsOffersScreen()
                   ),
-                );
+                );*/
               },
               child: Row(
                 children: [

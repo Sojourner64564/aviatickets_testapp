@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/core/route/route.gr.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/filters_screen/filters_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -80,13 +82,15 @@ class FiltersButtonsWidget extends StatelessWidget{
           padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: GestureDetector(
             onTap: (){
-              Navigator.push(
+              AutoRouter.of(context).push(const FilterRoute());
+
+             /* Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
                     const FilterScreen()
                 ),
-              );
+              );*/
             },
             child: Container(
               height: 35,

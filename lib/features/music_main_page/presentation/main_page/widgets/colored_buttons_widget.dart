@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/assets/app_text_styles/app_text_styles.dart';
+import 'package:aviatickets_testapp/core/route/route.gr.dart';
 import 'package:aviatickets_testapp/features/mocking_screens/presentation/screens/anywhere_to_go_screen.dart';
 import 'package:aviatickets_testapp/features/mocking_screens/presentation/screens/hard_routes_screen.dart';
 import 'package:aviatickets_testapp/features/mocking_screens/presentation/screens/hot_tickets_screen.dart';
@@ -18,14 +19,15 @@ class ColoredButtonsWidget extends StatelessWidget{
       children: [
         GestureDetector(
           onTap: (){
+            AutoRouter.of(context).push(const HardRoutesRoute());
+/*
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
                   const HardRoutesScreen()
               ),
-            );
-            //context.pushRoute(const HardRoutesRoute());
+            );*/
           },
           child: SizedBox(
             width: 80,
@@ -63,14 +65,14 @@ class ColoredButtonsWidget extends StatelessWidget{
         ),
         GestureDetector(
           onTap: (){
-            Navigator.push(
+            AutoRouter.of(context).push(const AnywhereToGoRoute());
+            /*Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
                   const AnywhereToGoScreen()
               ),
-            );
-            //context.pushRoute(const AnywhereToGoRoute());
+            );*/
           },
           child: SizedBox(
             width: 80,
@@ -103,14 +105,15 @@ class ColoredButtonsWidget extends StatelessWidget{
         ),
         GestureDetector(
           onTap: (){
-            Navigator.push(
+            AutoRouter.of(context).push(const WeekendRoute());
+
+            /*Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
                   const WeekendScreen()
               ),
-            );
-            //context.pushRoute(const WeekendRoute());
+            );*/
           },
           child: SizedBox(
             width: 80,
@@ -143,14 +146,14 @@ class ColoredButtonsWidget extends StatelessWidget{
         ),
         GestureDetector(
           onTap: (){
-            //AutoRouter.of(context).push(const HotTicketsRoute());
-            Navigator.push(
+            AutoRouter.of(context).push(const HotTicketsRoute());
+            /*Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) =>
                 const HotTicketsScreen()
               ),
-            );
+            );*/
             },
           child: SizedBox(
             width: 80,

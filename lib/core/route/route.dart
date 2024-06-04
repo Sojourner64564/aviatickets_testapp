@@ -9,7 +9,7 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: AutoTabScaffoldRoute.page,
             initial: true,
-            children: [
+            children: [//TODO факинг щит
           AutoRoute(page: MainRoute.page),
               AutoRoute(page: HardRoutesRoute.page),
               AutoRoute(page: AnywhereToGoRoute.page),
