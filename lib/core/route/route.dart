@@ -18,7 +18,6 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: ProfileRoute.page),
           ],
         ),
-
         AutoRoute(page: HardRoutesRoute.page),
         AutoRoute(page: AnywhereToGoRoute.page),
         AutoRoute(page: WeekendRoute.page),
@@ -26,7 +25,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: TicketsOffersRoute.page),
         AutoRoute(page: FilterRoute.page),
         AutoRoute(page: AllTicketsRoute.page),
-
       ];
 }
 /*
