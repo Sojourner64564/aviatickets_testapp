@@ -1,5 +1,6 @@
 import 'package:aviatickets_testapp/features/music_main_page/domain/entity/music_entity.dart';
 import 'package:aviatickets_testapp/features/music_main_page/domain/usecase/fetch_music_usecase.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
