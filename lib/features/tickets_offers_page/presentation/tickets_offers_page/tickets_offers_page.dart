@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:aviatickets_testapp/core/assets/app_colors/app_colors.dart';
 import 'package:aviatickets_testapp/core/injectable/injectable.dart';
 import 'package:aviatickets_testapp/features/tickets_offers_page/presentation/controller/clear_text_field_controller.dart';
@@ -61,7 +60,7 @@ class TicketsOffersPage extends StatelessWidget {
                                     width: 260,
                                     height: 35,
                                     child: TextField(
-                                      controller: switchTextsController.textFirstEditingController,
+                                      //controller: switchTextsController.textFirstEditingController,
                                       autofocus: false,
                                       style: const TextStyle(
                                         color: AppColors.white,
@@ -115,19 +114,19 @@ class TicketsOffersPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0), //0, 5, 0, 0
                                 child: SizedBox(
-                                  width: 260,
-                                  height: 35,
+                                  width: 260,//260
+                                  height: 35,//35
                                   child: TextField(
-                                    controller: switchTextsController.textSecondEditingController,
-                                    autofocus: false,
+                                    //controller: switchTextsController.textSecondEditingController,
+                                    //autofocus: false,
                                     style: const TextStyle(
                                         color: AppColors.white
                                     ),
                                     decoration: const InputDecoration(
                                       border: InputBorder.none,
-                                      isDense: true,
+                                     // isDense: true,
                                       hintText: 'Куда - Турция',
                                       hintStyle: TextStyle(
                                         color: AppColors.grey6,
